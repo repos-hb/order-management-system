@@ -27,7 +27,7 @@ public class OrderService {
 
     private final WebClient.Builder webClientBuilder;
 
-    public void placeOrder(OrderRequest orderRequest){
+    public String placeOrder(OrderRequest orderRequest){
         List<OrderLineItems> orderLineItemsList = new ArrayList<>();
         if(null != orderRequest){
             orderLineItemsList = orderRequest.getOrderRequestLineItemsList().stream()
@@ -41,6 +41,7 @@ public class OrderService {
             order.setLineItemsList(orderLineItemsList);
 
             orderRepository.save(order);
+            return "Order Placed";
         } else {
             throw new IllegalArgumentException("Product Out of Stock! Review Order!");
         }
