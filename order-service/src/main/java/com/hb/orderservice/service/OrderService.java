@@ -3,10 +3,12 @@ package com.hb.orderservice.service;
 import com.hb.orderservice.dto.InventoryResponse;
 import com.hb.orderservice.dto.OrderRequest;
 import com.hb.orderservice.dto.OrderRequestLineItems;
+import com.hb.orderservice.event.OrderPlacedEvent;
 import com.hb.orderservice.model.Order;
 import com.hb.orderservice.model.OrderLineItems;
 import com.hb.orderservice.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
@@ -27,6 +29,8 @@ public class OrderService {
 
     private final WebClient.Builder webClientBuilder;
 
+    private final KafkaTemplate<String, OrderPlacedEvent> kafkaTemplate;
+
     public String placeOrder(OrderRequest orderRequest){
         List<OrderLineItems> orderLineItemsList = new ArrayList<>();
         if(null != orderRequest){
@@ -39,6 +43,9 @@ public class OrderService {
             Order order = new Order();
             order.setOrderNum(UUID.randomUUID().toString());
             order.setLineItemsList(orderLineItemsList);
+
+            //publish to kafka
+            kafkaTemplate.send("notification-topic", new OrderPlacedEvent(order.getOrderNum()));
 
             orderRepository.save(order);
             return "Order Placed";
