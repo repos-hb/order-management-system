@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "0062ee38-7631-4ca7-87f9-a6ba2c9155fb",
+		"name": "oms-postman-collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13753233"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8085/api/inventory/skuiphone15",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8085/api/inventory/skuiphone15",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"inventory",
+						"skuiphone15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/api/product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"iphone 14\",\r\n    \"description\": \"apple iphone 14\",\r\n    \"price\": 9999.99\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8087/api/product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8087/api/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"api",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8083/api/order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"orderRequestLineItemsList\": [\r\n        {\r\n            \"skuId\": \"apple iphone 14\",\r\n            \"price\": 799.99,\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8083/actuator/health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/actuator/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"actuator",
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8083/api/order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"orderRequestLineItemsList\": [\r\n        {\r\n            \"skuId\": \"skuiphone14\",\r\n            \"price\": 899.99,\r\n            \"quantity\": 2\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"order"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
